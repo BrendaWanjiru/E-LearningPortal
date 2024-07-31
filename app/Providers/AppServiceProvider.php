@@ -44,13 +44,7 @@ class AppServiceProvider extends ServiceProvider
             return new UserService($app->make(UserRepository::class));
         });
 
-        $this->app->singleton(LecturerRepository::class, function ($app) {
-            return new LecturerRepository();
-        });
-
-        $this->app->singleton(LecturerService::class, function ($app) {
-            return new LecturerService($app->make(LecturerRepository::class));
-        });
+        
     }
 
     public function boot()

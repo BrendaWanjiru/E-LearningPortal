@@ -6,13 +6,13 @@ use App\User;
 
 class UserRepository
 {
-    public function all()
+    public function getAllUsers()
     {
         return User::all();
     }
 
-    public function findByCredentials(array $credentials)
+    public function findByEmailAndMatric($email, $matric)
     {
-        return User::where($credentials)->first();
+        return User::where('email', $email)->where('matric', $matric)->first();
     }
 }
