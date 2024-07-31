@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Course;
-use Illuminate\Http\Request;
-use Auth\Validator;
 use App\Http\Requests\CourseRequest;
-use Auth;
+use App\Services\CourseService;
+use Illuminate\Http\Request;
 use Session;
-use DB;
 
 class CourseController extends Controller
 {
-    public function __construct()
+    protected $courseService;
+
+    public function __construct(CourseService $courseService)
     {
-        // $this->middleware('auth');
+        $this->courseService = $courseService;
     }
 
     public function create()
@@ -22,62 +21,35 @@ class CourseController extends Controller
         return view('admin.course.add');
     }
 
-
     public function store(CourseRequest $request)
     {
-        $course = Course::create([
-            'csname' => $request['csname'],
-            'cscode' => $request['cscode'],
-            'status' => $request['status'],
-            'description' => $request['description'],
-            'level' => $request['level'],
-            'deptid' => $request['deptid'],
-            'lectid' => $request['lectid'],
-            'url' => $request['url']
-        ]);
+        $data = $request->only(['csname', 'cscode', 'status', 'description', 'level', 'deptid', 'lectid', 'url']);
+        $this->courseService->createCourse($data);
+
         Session::flash('flash_message', 'Successfully registered course');
         return redirect('/admincourse');
     }
 
-    public function show(Course $course)
+    public function show()
     {
-        $course = Course::all();
-        return view('admin.course.all', ['course' => $course]);
+        $courses = $this->courseService->getAllCourses();
+        return view('admin.course.all', ['courses' => $courses]);
     }
 
-    public function showcourse(Course $course)
+    public function showCourseDetails()
     {
-        $course =  DB::table('courses')
-                            ->leftJoin('departments', 'courses.deptid' ,  '=', 'departments.deptid')
-                            ->leftJoin('lecturers', 'courses.lectid' ,  '=', 'lecturers.id')
-                            ->get();
-
-        return response()->json(['course' => $course], 200);
+        $courseDetails = $this->courseService->getCourseDetails();
+        return response()->json(['course' => $courseDetails], 200);
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Course  $course
-     * @return \Illuminate\Http\Response
-     */
     public function search(Request $request)
     {
-        $search = $request->search;
-        $searchQuery = Course::where('cscode','LIKE','%'.$search.'%')->get();
-        return response()->json(['search' => $searchQuery], 200);
+        $searchResults = $this->courseService->searchCourses($request->search);
+        return response()->json(['search' => $searchResults], 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Course  $course
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Course $course)
     {
-        //
+        // Implement destroy logic
     }
 }
