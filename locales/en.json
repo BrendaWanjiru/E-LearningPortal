@@ -1,0 +1,14 @@
+{
+    "welcomeMessage": "Welcome to your E-Learning Portal!",
+    "welcomeDescription": "Our e-learning portal provides a comprehensive platform for managing and accessing your educational content. Explore the various features and tools to enhance your learning experience.",
+    "notesFeature": "Notes",
+    "notesDescription": "Create and view your notes, organize them efficiently, and access them anytime.",
+    "exploreNotes": "Explore Notes",
+    "apiTokensFeature": "API Tokens",
+    "apiTokensDescription": "Manage your API tokens to integrate with external services and tools.",
+    "manageApiTokens": "Manage API Tokens",
+    "localizationFeature": "Localization",
+    "localizationDescription": "Switch between English and French to use the platform in your preferred language.",
+    "authenticationFeature": "Authentication",
+    "authenticationDescription": "Securely login and register to access all the features of the e-learning portal, with support for password recovery and email verification."
+}

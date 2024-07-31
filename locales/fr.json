@@ -1,0 +1,15 @@
+{
+    "welcomeMessage": "Bienvenue sur votre portail d'apprentissage en ligne!",
+    "welcomeDescription": "Notre portail d'apprentissage en ligne fournit une plateforme complète pour gérer et accéder à votre contenu éducatif. Explorez les différentes fonctionnalités et outils pour améliorer votre expérience d'apprentissage.",
+    "notesFeature": "Notes",
+    "notesDescription": "Créez et visualisez vos notes, organisez-les efficacement et accédez-y à tout moment.",
+    "exploreNotes": "Explorer les Notes",
+    "apiTokensFeature": "Jetons API",
+    "apiTokensDescription": "Gérez vos jetons API pour intégrer des services et outils externes.",
+    "manageApiTokens": "Gérer les Jetons API",
+    "localizationFeature": "Localisation",
+    "localizationDescription": "Passez de l'anglais au français pour utiliser la plateforme dans votre langue préférée.",
+    "authenticationFeature": "Authentification",
+    "authenticationDescription": "Connectez-vous et enregistrez-vous en toute sécurité pour accéder à toutes les fonctionnalités du portail d'apprentissage en ligne, avec prise en charge de la récupération de mot de passe et de la vérification par email."
+}
+
